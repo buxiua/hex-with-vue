@@ -1,0 +1,122 @@
+canvas {
+	cursor: pointer;
+	display: block;
+	background-color: #000;
+	position: fixed;
+	/* z-index: -1; */
+	top: 0;
+	left: 0;
+}
+body{
+	/* width: 100vw; */
+	height: 95vh;
+}
+div{
+	padding: 0;
+	margin: 0;
+}
+.hex{
+	float: left;
+	position: relative;
+	cursor: pointer;
+}
+
+/* .rect::after{
+	content: 0;
+	display: inline-block;
+	clear: both;
+} */
+
+.hex>div{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: inherit;
+	height: inherit;
+	box-sizing: border-box;
+	border-width: 1px;
+	border-style: none solid;
+	border-color: #000000;
+}
+.hex>div:nth-child(2){
+	transform: rotate(60deg);
+}
+.hex>div:nth-child(3){
+	transform: rotate(-60deg);
+}
+
+#game{
+	width: 80%;
+	display: -webkit-flex;
+	display: flex;
+	flex-wrap: wrap;
+	height: 100%;
+	margin: 0 auto;
+	justify-content: space-around;
+	align-content: flex-start;
+	align-items: center;
+}
+
+h1{
+	display: inline-block;
+	width: 100%;
+	z-index: 1;
+	color: #FFFFFF;	
+	text-align: center;
+	font-size: 75px;
+	position: relative;
+	/* left: -10px; */
+	animation: shift 2s infinite alternate linear;
+}
+@keyframes shift{
+	from{
+		left: -50px;
+	}
+	to{
+		left: 50px;
+	}
+}
+
+.game_board{
+	padding-top: 8px;
+	background-color: #FFFFFF;
+	z-index: 1;
+}
+
+.control{
+	display: flex;
+	flex-direction: column;
+	height: 50%;
+	flex-grow:0.65;
+	background-color: #FFFFFF;
+	z-index: 1;
+}
+
+#setting{
+	flex-grow: 1;
+}
+#info{
+	flex-grow: 3;	
+}
+.info{
+	display: flex;
+}
+
+#basicInfo{
+	margin: 0 10px;
+	border: solid black 1px;
+	height: 100px;
+	flex: 1;
+}
+#moveInfo{
+	margin: 0 10px;
+	border: solid black 1px;
+	height: 100px;
+	flex: 1;
+	overflow-y: auto;	
+}
+
+fieldset{
+	margin: 15px;
+}
+

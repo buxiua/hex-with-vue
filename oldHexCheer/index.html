@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<!-- <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.0.0/dist/tf.min.js"></script> -->
+		<!-- <script src="js/tf.main.js" type="text/javascript" charset="utf-8"></script> -->
+		<script src="js/jquery-3.5.1.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/class.js" type="text/javascript" charset="utf-8"></script>
+		<!-- <script src="js/model.js" type="text/javascript" charset="utf-8"></script> -->
+		<link rel="stylesheet" type="text/css" href="./css/main.css"/>
+	</head>
+	<body>
+		<canvas id="canvas" width="" height=""></canvas>
+		<script src="./js/index.js"></script>
+		<div id="game" class="hex_game">
+			<h1>hex棋</h1>
+			<div class="game_board" :style="{paddingTop:height/2+'px'}">
+				<!-- 两层for循环 -->
+				<div v-for="y in items" :key="" :class="[y+'y','rect']" :style="rectStyle(y)">
+					<div v-for="x in items" :key="" :class="[x+'x','hex']" @click="doMove($event)" :style="hexStyle(x,y)">
+						<div style="z-index: 1;" :style="boardBounds(x,y)">{{render(x,y)}}</div>
+						<div :style="boardBounds(x,y)"></div>
+						<div :style="boardBounds(x,y)"></div>
+					</div>
+				</div>
+			</div>
+			<div class="control">
+				<form id="setting">
+					<fieldset id="">
+						<legend>hex棋配置</legend>
+						<div id="">
+							<label for="isAI">模式：</label><input type="button" id="isAI" :value="model" @click="changeModel">
+							<br>
+							<input type="button" @click="undo" value="悔棋" />
+							<input type="button" @click="restart" value="重新开始" />
+						</div>
+					</fieldset>
+				</form>
+				<form id="info">
+					<fieldset id="">
+						<legend>落子信息</legend>
+						<div class="info">
+							<div id="basicInfo">
+								<p>当前棋手：{{player}}</p>
+								<p>总步数：{{board.state.allChessCount}}</p>
+							</div>
+							<div id="moveInfo">
+								<p v-for="pos,index in chess" v-if="pos">第{{index+1}}步{{index%2?"蓝方":"红方"}}:({{pos[0]}},{{pos[1]}})</p>
+							</div>
+						</div>
+					</fieldset>
+				</form>
+			</div>
+		</div>
+	</body>
+	<script src="./js/main.js" type="text/javascript" charset="utf-8"></script>
+</html>
